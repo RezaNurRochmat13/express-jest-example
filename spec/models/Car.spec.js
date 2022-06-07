@@ -1,19 +1,19 @@
-const {
-    sequelize,
-    dataTypes,
-    checkModelName,
-    checkPropertyExists
-} = require('sequelize-test-helpers');
 
-const CarModel = require("../../app/models/car.js");
+// const db = require("../../app/models/index.js");
+// const Car = db.car;
 
-describe('test properties on model', () => {
-    const Model = CarModel(sequelize, dataTypes);
-    const instance = new Model;
+// describe('test find all method', () => {
+//     const car = {
+//         name: "BMW",
+//         price: 20000,
+//         size: "small",
+//         image: "https://www.google.com",
+//         isCurrentlyRented: false,
+//         createdAt: new Date(),
+//         updatedAt: new Date()
+//     };
 
-    checkModelName(Model)('Car');
+//     Car.save(car);
 
-    context('check properties', () => {
-        ['name', 'price', 'size', 'image', 'isCurrentlyRented'].forEach(checkPropertyExists(instance));
-    });
-});
+//     expect(Car.findAll()).toBe(1);
+// });
