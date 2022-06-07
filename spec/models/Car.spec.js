@@ -5,11 +5,11 @@ const {
     checkPropertyExists
 } = require('sequelize-test-helpers');
 
-const CarModel = require("../../app/models/car");
+const CarModel = require("../../app/models/car.js");
 
 describe('test properties on model', () => {
     const Model = CarModel(sequelize, dataTypes);
-    const instance = new Model();
+    const instance = new Model;
 
     checkModelName(Model)('Car');
 
