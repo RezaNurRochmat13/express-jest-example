@@ -29,7 +29,7 @@ describe('test api create car', () => {
             password: 'hilmianakkampus'
         };
 
-        await request(app)
+        request(app)
         .post("/v1/auth/register")
         .send(loginAuth);
 
@@ -45,7 +45,7 @@ describe('test api create car', () => {
             size: "small"
         };
 
-        await request(app)
+        request(app)
         .post("/v1/cars")
         .set("Authorization", token)
         .send(carPayload)
@@ -61,7 +61,7 @@ describe('test api create car', () => {
             password: 'akbaranakkorlap'
         };
 
-        await request(app)
+        request(app)
         .post("/v1/auth/register")
         .send(loginAuth);
 
@@ -77,11 +77,27 @@ describe('test api create car', () => {
             size: "small"
         };
 
-        await request(app)
+        request(app)
         .post("/v1/cars")
         .set("Authorization", token)
         .send(carPayload)
         .expect(401)
+        .expect("Content-Type", "application/json; charset=utf-8");
+    });
+});
+
+describe('test get car by id', () => {
+    it('return 200 using valid id', () => {
+        request(app)
+        .get("/v1/cars/1")
+        .expect(200)
+        .expect("Content-Type", "application/json; charset=utf-8");
+    });
+
+    it('return 404 using invalid id', () => {
+        request(app)
+        .get("/v1/cars/1000")
+        .expect(404)
         .expect("Content-Type", "application/json; charset=utf-8");
     });
 });
